@@ -1,42 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import image from "../assets/img/home_page/slider_img.png";
 import { ReactComponent as Prev } from "../assets/icons/slider/prev.svg";
 import { ReactComponent as Next } from "../assets/icons/slider/next.svg";
 import Wrapper from "../style-models/Slider";
-const data = [
-  {
-    _id: 1,
-    image,
-    link: "https://google.com",
-    text: "1Ножи «Tuotown» – это главный инструмент поваров и секрет кулинарного мастерства",
-    title: "Исключительное качество без компромиссов",
-  },
-  {
-    _id: 2,
-    image,
-    link: "https://google.com",
-    text: "2Mults",
-    title: "Исключительное качество без компромиссов",
-  },
-  {
-    _id: 3,
-    image,
-    link: "https://google.com",
-    text: "3Ножи «Tuotown» – это главный инструмент поваров и секрет кулинарного мастерства",
-    title: "Исключительное качество без компромиссов",
-  },
-  {
-    _id: 4,
-    image,
-    link: "https://google.com",
-    text: "4Ножи «Tuotown» – это главный инструмент поваров и секрет кулинарного мастерства",
-    title: "Исключительное качество без компромиссов",
-  },
-];
+import { useSelector } from "react-redux/es/exports";
+
 export const Slider = () => {
   const [activeSlide, setActiveSlide] = useState(0);
-
+  const data = useSelector((store) => store.slider);
   const nextSlide = () => {
     setActiveSlide(activeSlide + 1);
   };
@@ -46,7 +17,7 @@ export const Slider = () => {
   return (
     <Wrapper className='slider-container'>
       <div className='slides-wrapper'>
-        {data.map(({ image, title, text, link, _id }, index) => (
+        {data.map(({ image, title, descr, link, _id }, index) => (
           <div
             key={_id}
             className='slider-item'
@@ -57,7 +28,7 @@ export const Slider = () => {
           >
             <div className='slide-container'>
               <h3 className='title'>{title}</h3>
-              <p className='descr'>{text}</p>
+              <p className='descr'>{descr}</p>
               <Link to={link} className='btn'>
                 Подробнее
               </Link>

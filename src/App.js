@@ -14,6 +14,8 @@ import { SideBar } from "./components/SideBar";
 import { useDispatch } from "react-redux/es/exports";
 import { closeSidebar } from "./features/sideBarSlice";
 import ScrollToTop from "./components/ScrollToTop";
+import NotFound from "./pages/Error";
+import { Checkout } from "./pages/Checkout";
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -25,6 +27,7 @@ export const App = () => {
       <ScrollToTop />
       <Routes>
         <Route path='blog' element={<Blog />} />
+        <Route path='checkout' element={<Checkout />} />
         <Route path='blog/:id' element={<SingleBlog />} />
         <Route path='service' element={<Service />} />
         <Route path='catalog' element={<Catalog />} />
@@ -33,7 +36,7 @@ export const App = () => {
         <Route path='map' element={<Map />} />
         <Route path='cart' element={<Cart />} />
         <Route path='/' element={<Home />} />
-        <Route path='*' element={<h1>Error...</h1>} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
     </>

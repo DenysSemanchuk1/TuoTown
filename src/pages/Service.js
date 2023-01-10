@@ -1,7 +1,17 @@
 import styled from "styled-components";
 import { Admit } from "../components/Admit";
-import { transition } from './../style-models/mixins/mixins';
+import { transition } from "./../style-models/mixins/mixins";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import { setValue } from "../features/serviceSlice";
 export const Service = () => {
+  const { theme, name, email, tel, message } = useSelector(
+    (store) => store.service
+  );
+  const dispatch = useDispatch();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    dispatch(setValue({ name, value }));
+  };
   return (
     <Wrapper>
       <div className='container-fluid'>
@@ -12,12 +22,12 @@ export const Service = () => {
         <form className='service-form'>
           <div className='service-form__inner'>
             <div className='service-form__item'>
-              <label htmlFor='topic'>Тема</label>
-              <select name='topic' id='topic'>
-                <option value=''>Неполадки с ножом</option>
-                <option value=''>Неполадки с ножом</option>
-                <option value=''>Неполадки с ножом</option>
-                <option value=''>Неполадки с ножом</option>
+              <label htmlFor='theme'>Тема</label>
+              <select name='theme' id='theme' value={theme} onChange={handleChange}>
+                <option value='break-knife'>Неполадки с ножом</option>
+                <option value='break-knife'>Неполадки с ножом</option>
+                <option value='break-knife'>Неполадки с ножом</option>
+                <option value='break-knife'>Неполадки с ножом</option>
               </select>
             </div>
             <div className='service-form__item'>
@@ -25,29 +35,42 @@ export const Service = () => {
               <input
                 type='email'
                 name='email'
+                onChange={handleChange}
                 id='email'
                 placeholder='Ваша почта'
+                value={email}
               />
             </div>
             <div className='service-form__item req'>
               <label htmlFor='name'>Имя</label>
-              <input type='text' name='name' id='name' placeholder='Алексей ' />
+              <input
+                type='text'
+                name='name'
+                onChange={handleChange}
+                id='name'
+                placeholder='Алексей '
+                value={name}
+              />
             </div>
             <div className='service-form__item req'>
               <label htmlFor='tel'>Телефон</label>
               <input
                 type='tel'
                 name='tel'
+                onChange={handleChange}
                 id='tel'
                 placeholder='+7 (___) ___-__-__'
+                value={tel}
               />
             </div>
             <div className='service-form__item message-input'>
               <label htmlFor='message'>Комментарий</label>
               <textarea
                 name='message'
+                onChange={handleChange}
                 id='message'
                 placeholder='Впишите ваше сообщение....'
+                value={message}
               />
             </div>
           </div>

@@ -27,11 +27,11 @@ export const Wrapper = styled.section`
     border: none;
     display: inline-block;
     color: rgba(255, 255, 255);
-    font-family: "Montserrat";
+    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 15px;
     &::placeholder {
-      font-family: "Montserrat";
+      font-family: "Montserrat", sans-serif;
       font-weight: 400;
       font-size: 15px;
       line-height: 18px;
@@ -48,5 +48,9 @@ export const Wrapper = styled.section`
     border: none;
     padding: 0;
     margin: 0;
+  }
+
+  @media (max-width: 630px) {
+    text-align: center;
   }
 `;

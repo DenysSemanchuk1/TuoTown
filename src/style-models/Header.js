@@ -15,12 +15,19 @@ export default styled.header`
     justify-content: space-between;
     align-items: center;
   }
-  a, button {
+  .cart-btn {
+    display: none;
+  }
+  .dots-btn {
+    padding-left: 0;
+  }
+  a,
+  button {
     background-color: transparent;
     border: none;
     margin: 0;
-    padding: 0;
-    width: 58px;
+    padding: 0 15px;
+    display: inline-block;
     text-align: center;
     &:hover path,
     &:hover circle {
@@ -37,15 +44,43 @@ export default styled.header`
     }
   }
   .phone {
+    svg {
+      display: none;
+    }
     &:hover {
       color: var(--red);
     }
-    font-family: "Jura";
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
     color: #ffffff;
     text-decoration: none;
     ${transition}
+  }
+  @media (max-width: 768px) {
+    .phone {
+      font-size: 0;
+      svg {
+        display: inline-block;
+      }
+    }
+    position: static;
+  }
+  @media (max-width: 576px) {
+    .right {
+      display: none;
+    }
+    .map-btn {
+      display: none;
+    }
+    .cart-btn {
+      display: inline-block;
+    }
+  }
+  .center {
+    padding-right: 0;
+    img {
+      width: 100px;
+    }
   }
 `;

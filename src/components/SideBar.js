@@ -4,26 +4,34 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { closeSidebar } from "../features/sideBarSlice";
 import { transition } from "./../style-models/mixins/mixins";
+import { useHandleFilter } from "./../hooks/useHandleFilter";
 
 export const SideBar = () => {
   const dispatch = useDispatch();
   const state = useSelector((store) => store.sidebar);
+  const handleFilter = useHandleFilter();
   return (
-    <Wrapper style={{ transform: `translateX(${!state ? "-100%" : "0"})` }}>
+    <Wrapper style={{ transform: `translateX(${!state ? "-200%" : "0"})` }}>
       <button className='close' onClick={() => dispatch(closeSidebar())}>
         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'>
           <path d='M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z' />
         </svg>
       </button>
-      <ul className='categories'>
+      <ul className='categories' onClick={handleFilter}>
         <li>
-          <Link to='/catalog/kitchen'>Кухонные ножи TUOTOWN</Link>
+          <Link to='/catalog/kitchen' data-filter='kitchen'>
+            Кухонные ножи TUOTOWN
+          </Link>
         </li>
         <li>
-          <Link to='/catalog/kitchen'>Точильные камни</Link>
+          <Link to='/catalog/sharpener' data-filter='sharpener'>
+            Точильные камни
+          </Link>
         </li>
         <li>
-          <Link to='/catalog/kitchen'>Складные ножи TUOTOWN</Link>
+          <Link to='/catalog/folding' data-filter='folding'>
+            Складные ножи TUOTOWN
+          </Link>
         </li>
       </ul>
       <nav>
@@ -91,5 +99,10 @@ const Wrapper = styled.aside`
     li + li {
       margin-top: 20px;
     }
+  }
+
+  @media  (max-width: 420px) {
+    width: 100%;
+    padding: 10px;
   }
 `;

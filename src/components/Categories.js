@@ -39,7 +39,6 @@ export const Categories = () => {
     <Wrapper>
       <div className='categories'>
         <div className='container-fluid'>
-          {/* Добавить обработчик */}
           <div className='categories-wrapper' onClick={handleFilter}>
             <button data-category='kitchen' className='category-btn active'>
               <img src={kitchen} alt='kitchen knife' />

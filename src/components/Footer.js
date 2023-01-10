@@ -8,14 +8,16 @@ import polytics from "../assets/icons/social/footer-img.png";
 import supportLogo from "../assets/img/support-logo.png";
 import Wrapper from "../style-models/Footer";
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { useHandleFilter } from "./../hooks/useHandleFilter";
 export const Footer = () => {
+  const handleFilter = useHandleFilter();
   return (
     <footer className='bg'>
       <Wrapper>
         <div className='container-fluid'>
           <div className='footer__wrapper'>
-            <div className='footer-descr'>
+            <div className='footer-descr footer__item'>
               <div className='footer-descr__logo'>
                 <img src={logo} alt='footer logo' />
                 <p>легендарные ножи, создающие шедевры</p>
@@ -32,7 +34,7 @@ export const Footer = () => {
                 товаров.
               </p>
             </div>
-            <div className='footer-nav'>
+            <div className='footer-nav footer__item'>
               <div className='footer__menu'>
                 <div className='title'>Информация</div>
                 <ul>
@@ -50,40 +52,50 @@ export const Footer = () => {
                   </li>
                 </ul>
               </div>
-              <div className='footer__menu'>
+              <div className='footer__menu footer__item'>
                 <div className='title'>Каталог</div>
-                <li>
-                  <Link to={`catalog/kitchen`}>Кухонные ножи</Link>
-                </li>
-                <li>
-                  <Link to={`catalog/folding`}>Складные ножи</Link>
-                </li>
-                <li>
-                  <Link to={`catalog/sharpener`}>Точилки для ножей</Link>
-                </li>
-                <li>
-                  <Link to={`catalog/accessories`}>Аксессуары</Link>
-                </li>
+                <ul className='footer__menu-filter' onClick={handleFilter}>
+                  <li>
+                    <Link to='/catalog/kitchen' data-filter='kitchen'>
+                      Кухонные ножи
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/catalog/folding' data-filter='folding'>
+                      Складные ножи
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/catalog/sharpener' data-filter='sharpener'>
+                      Точилки для ножей
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/catalog/accessories' data-filter='accessories'>
+                      Аксессуары
+                    </Link>
+                  </li>
+                </ul>
               </div>
-              <div className='footer__social'>
+              <div className='footer__social footer__item'>
                 <span className='title'>Мы в соцсетях</span>
                 <span className='btns-container'>
-                  <a href='https://youtube.com'>
+                  <a href='https://www.facebook.com/tuotown/'>
                     <img src={facebook} alt='facebook' />
                   </a>
-                  <a href='https://youtube.com'>
+                  <a href='https://vk.com/tuotown'>
                     <img src={vk} alt='vk' />
                   </a>
-                  <a href='https://youtube.com'>
+                  <a href='https://www.instagram.com/tuotown/?hl=en'>
                     <img src={instagramm} alt='instagramm' />
                   </a>
-                  <a href='https://youtube.com'>
+                  <a href='https://www.youtube.com/@tuotownkinfe921'>
                     <img src={youtube} alt='youtube' />
                   </a>
                 </span>
               </div>
             </div>
-            <div className='footer-contacts'>
+            <div className='footer-contacts footer__item'>
               <div className='title'>Контактная информация</div>
               <a href='tel:+79811201117' className='phone'>
                 +7 (981) 120-11-17
@@ -108,8 +120,8 @@ export const Footer = () => {
       <div className='container-fluid'>
         <FooterBottom>
           <p>
-            TUOTOWN © {new Date().getFullYear()} Торговая марка TUOTOWN зарегистрирована. Все права
-            защищены и принадлежат правообладателям.
+            TUOTOWN © {new Date().getFullYear()} Торговая марка TUOTOWN
+            зарегистрирована. Все права защищены и принадлежат правообладателям.
           </p>
           <img src={supportLogo} alt='support logo' />
         </FooterBottom>
@@ -121,11 +133,17 @@ export const Footer = () => {
 const FooterBottom = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: start;
   padding: 20px 0 25px 0;
   p {
     font-size: 12px;
     line-height: 21px;
     color: #ffffff;
     opacity: 0.5;
+  }
+  @media (max-width: 630px) {
+    p {
+      display: none;
+    }
   }
 `;

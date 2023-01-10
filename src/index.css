@@ -10,9 +10,6 @@ html {
   background: var(--bg);
   color: #fff;
 }
-h3 {
-  font-family: "Jura", sans-serif;
-}
 a {
   text-decoration: none;
   color: #fff;
@@ -181,7 +178,7 @@ button {
   text-decoration: none;
   min-height: 55px;
   padding: 16px;
-  width: 165px;
+  max-width: 200px;
   text-align: center;
   transition: all 0.4s;
   background-color: transparent;
@@ -190,4 +187,24 @@ button {
 .btn:hover {
   background-color: var(--red);
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --fluid: 10px;
+  }
+  .product__img {
+    height: 378px;
+  }
+}
+
+@media (max-width: 576px) {
+  .product__img {
+    height: 330px;
+  }
+}
+@media (max-width: 400px) {
+  .title {
+    font-size: 20px !important;
+  }
 }

@@ -11,13 +11,13 @@ export const Product = ({ _id, image, title, isNew, price }) => {
   const [clicked, setClicked] = useState(false);
   return (
     <div className='product'>
-      <a href={`/products/${_id}`} className='product__img'>
+      <Link to={`/products/${_id}`} className='product__img'>
         <img src={image} alt={title} />
-      </a>
+      </Link>
       <div className='product__descr'>
-        <a href={`/products/${_id}`} className='title'>
+        <Link to={`/products/${_id}`} className='product__title'>
           {title}
-        </a>
+        </Link>
         <div className='product__descr-wrapper'>
           <span className='price'>850 р.</span>
           {isNew && <span className='new'>Новинка</span>}

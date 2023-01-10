@@ -5,8 +5,6 @@ import { useParams } from "react-router-dom";
 //images
 import prevIcon from "../assets/icons/slider/prev.svg";
 import nextIcon from "../assets/icons/slider/next.svg";
-import advantagesImage1 from "../assets/img/product-page/advantages-1.jpg";
-import advantagesImage2 from "../assets/img/product-page/advantages-2.jpg";
 
 import { Admit } from "../components/Admit";
 import { PrimaryProduct } from "../components/PrimaryProduct";
@@ -59,22 +57,13 @@ export const Product = () => {
               </div>
               <div className='product-descr__characteristics'>
                 <h4>Характеристики</h4>
-                <div className='product-descr__item'>
-                  <p>Длина лезвия</p>
-                  <p>24 см</p>
-                </div>
-                <div className='product-descr__item'>
-                  <p>Длина лезвия</p>
-                  <p>24 см</p>
-                </div>
-                <div className='product-descr__item'>
-                  <p>Длина лезвия</p>
-                  <p>24 см</p>
-                </div>
-                <div className='product-descr__item'>
-                  <p>Длина лезвия</p>
-                  <p>24 см</p>
-                </div>
+                {product.characteristics.map(({ title, value }) => (
+                  <div className='product-descr__item'>
+                    <p>{title}</p>
+                    <p>{value}</p>
+                  </div>
+                ))}
+
                 <div className='product-descr__item'>
                   <p>Цена</p>
                   <p>{product.price} р.</p>
@@ -141,7 +130,6 @@ const Wrapper = styled.main`
       text-align: center;
     }
   }
-  /* product-descr__inner */
   .product-descr__inner {
     display: flex;
     justify-content: start;

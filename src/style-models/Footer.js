@@ -102,4 +102,40 @@ export default styled.div`
       margin-bottom: 25px;
     }
   }
+  @media (max-width: 1200px) {
+    .footer__wrapper {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer__item {
+      min-width: 100%;
+      margin-bottom: 27px;
+    }
+    .footer-descr__logo {
+      max-width: 320px;
+    }
+  }
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
+  @media (max-width: 400px) {
+    .footer__social {
+      display: block !important;
+      span {
+        display: block !important;
+        &.title {
+          margin-bottom: 10px !important;
+        }
+      }
+    }
+    .footer__menu {
+      li {
+        display: block !important;
+        a {
+          padding: 5px 0 5px 0 !important;
+        }
+      }
+    }
+  }
 `;

@@ -9,6 +9,7 @@ import { selectProducts } from "../selectors/products/general_selectors";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { getFilteredProducts } from "../features/productsSlice";
+import { useHandleFilter } from './../hooks/useHandleFilter';
 const removeActiveClass = () => {
   const btns = document.querySelectorAll("a[data-filter]");
   btns.forEach((btn) => btn.classList.remove("active"));
@@ -17,16 +18,8 @@ export const Catalog = () => {
   const { filter } = useParams();
   const { allProducts, filteredByCategory, newProducts, popularProducts } =
     useSelector(selectProducts);
-  const dispatch = useDispatch();
+  const handleFilter = useHandleFilter()
 
-  const handleFilter = (e) => {
-    if (e.target.tagName === "A") {
-      if (e.target.classList.contains("active")) return;
-      removeActiveClass();
-      e.target.classList.add("active");
-      dispatch(getFilteredProducts(e.target.dataset.filter));
-    }
-  };
   return (
     <Wrapper>
       <Primary />

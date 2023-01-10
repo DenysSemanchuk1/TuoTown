@@ -67,7 +67,7 @@ export const Cart = () => {
             К оплате:
             <div className='total__price'>{cart.totalPrice} р.</div>
           </div>
-          <Link to='' className='btn'>
+          <Link to='/checkout' className='btn'>
             Подтвердить покупку
           </Link>
         </section>

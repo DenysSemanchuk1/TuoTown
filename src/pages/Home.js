@@ -1,4 +1,3 @@
-import { Admit } from "../components/Admit";
 import { Slider } from "../components/Slider";
 import { Tabs } from "../components/Tabs";
 import { Categories } from "./../components/Categories";
@@ -7,13 +6,13 @@ import styled from "styled-components";
 import img1 from "../assets/img/descr/descr-1.jpg";
 import img2 from "../assets/img/descr/descr-2.jpg";
 import { Blogs } from "../components/Blogs";
-import { CheckIcon } from "../components/CheckIcon";
 export const Home = () => {
   return (
     <main className='bg'>
       <Slider />
       <Categories />
       <Tabs />
+      {/* 
       <Description>
         <div className='container-fluid'>
           <div className='descr-first-item'>
@@ -34,7 +33,7 @@ export const Home = () => {
             </div>
           </div>
           <div className='descr-second-item'>
-            <div className='descr'>
+            <div className='details'>
               <p>
                 Истинная красота ножа — совершённая функциональность
                 и визуальная гармония. Этот предмет издревле сопутствовал
@@ -52,8 +51,8 @@ export const Home = () => {
                 для различных потребностей и любого бюджета — от столовых
                 приборов до шеф-ножей.
               </p>
-              <h3>
-                Ножи «Tuotown» – это главный инструмент поваров и секрет
+              <h3> */}
+      {/* Ножи «Tuotown» – это главный инструмент поваров и секрет
                 кулинарного мастерства
               </h3>
             </div>
@@ -66,7 +65,7 @@ export const Home = () => {
           <h2 className='title'>Всё самое интересное о ножах</h2>
           <Blogs elems={3} />
         </div>
-      </section>
+      </section> */}
     </main>
   );
 };
@@ -75,24 +74,19 @@ const Description = styled.section`
   font-family: "Montserrat", sans-serif;
   padding-bottom: 70px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  .img1 {
-    max-width: 300px;
-    border-radius: 16px;
-    object-fit: cover;
-  }
   .descr-first-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
-    .details {
-      max-width: 800px;
-    }
-    p {
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 22px;
-    }
+  }
+  p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .details {
+    width: 55%;
   }
   .descr-second-item {
     display: flex;
@@ -116,9 +110,10 @@ const Description = styled.section`
       line-height: 36px;
     }
   }
-  .img-2 {
-    max-width: 300px;
-    border-radius: 16px;
+  img {
+    width: 40%;
+    border-radius: 8%;
     object-fit: cover;
+    max-height: 500px;
   }
 `;
